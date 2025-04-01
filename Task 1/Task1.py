@@ -1,27 +1,19 @@
 
-n = int(input("Введите длину массива: "))
-m = int(input("Введите длину шага: "))
+import sys
 
-array = [0 for i in range(n)]
+n = int(sys.argv[1])
+m = int(sys.argv[2])
+array = sys.argv[3].split(",")
 
-print("Введите значиения массива: ")
-
-for i in range(n):
-    array[i] = int(input())
-
-check = ""
+start_index = 0
 length = ""
-check_num = 0
 
-while array[0] != check:
-    check_array = []
+while True:
+    length += array[start_index]
+    start_index = (start_index + m - 1) % n
+    if start_index == 0:
+        break
 
-    for i in range(0 + check_num, m+check_num):
-       check_array.append(array[i%n])
-    check = check_array[m-1]
-    length += str(check_array[0])
-    check_num += m - 1
-
-print("Длина: " + length)
+print(length)
 
 
